@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-content">
+    <span class="card-codigo">
+      Adicione Produto
+    </span>
+    <form (ngSubmit)="onSubmit()">
+      <div class="row">
+
+        <div class="input-field col-s6">
+          <input type="text" placeholder="informe o código" name="codigo"[(ngModel)]="produto.codigo">
+        </div>
+
+        <div class="input-field col-s6">
+            <input type="text" ng-pattern='/^[A-Za-z]*$/' placeholder="informe a descrição" name="description"[(ngModel)]="produto.description">
+        </div>
+
+        <div class="input-field col-s6">
+            <input type="text" placeholder="informe a quantidade" name="qtde"[(ngModel)]="produto.qtde">
+        </div>
+
+        <div class="input-field col-s6">
+              <input type="text" placeholder="informe a loja" name="loja"[(ngModel)]="produto.loja">
+       </div>
+
+       <div class="input-field col-s6">
+                <input type="text" placeholder="informe a seção" name="secao"[(ngModel)]="produto.secao">
+        </div>
+
+        <div class="input-field col-s6">
+            <input type="text" placeholder="informe o tipo" name="tipo"[(ngModel)]="produto.tipo">
+        </div>
+
+        <div class="input-field col-s6">
+            <input type="date" placeholder="informe a validade" name="validade"[(ngModel)]="produto.validade">
+        </div>
+      </div>
+      <input type="submit" class="btn btn-light">
+      <button type="reset" class="btn btn-warning red">Cancelar</button>
+    </form>
+  </div>
+</div>

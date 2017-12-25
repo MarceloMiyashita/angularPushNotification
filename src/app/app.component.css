@@ -1,0 +1,13 @@
+.mensagem-busca{
+    display: none;
+    text-align: center;
+    color: red;
+}
+.ul-content{
+    background-color: #f7f7f7;
+    text-align:left;
+    padding: 5px;
+}
+.campo-busca{
+    text-align: left;
+}

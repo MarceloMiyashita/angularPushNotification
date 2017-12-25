@@ -1,20 +1,25 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<nav>
+  <div class="navbar-wrapper light-blue">
+<a href="/app.component.html" class="brand-logo center">Produtos App</a>
+  </div>
+</nav>
+<div class="container">
+  <h5>Filtrar por:</h5>
+  <input class="campo-busca" type="text" placeholder="Informar a descrição do produto:" [(ngModel)]="searchterm" (keydown)="search($event)">
+  <ul class="ul-content" *ngFor="let prod of produtos">
+    <li> {{'# '+ (prod.codigo) }}</li>
+    <li> {{'Descrição: '+ (prod.description | uppercase) }}</li>
+    <li> {{'Quantidade: '+ (prod.qtde) }}</li>
+    <li>{{'Validade: ' + (prod.validade | date: "dd/MM/yyyy")}}</li>
+    <li> {{'Loja: '+ (prod.loja) }}</li>
+    <li> {{'Seção: '+ (prod.secao) }}</li>
+    <li> {{'Tipo: '+ (prod.tipo) }}</li>
+  </ul>
+  <div *ngIf="produtos?.length < 1">
+    <p class="mensagem-busca">Nenhuma busca encontrada</p>
+  </div>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
-
+<div class="container">
+  <app-produtos></app-produtos>
+  <app-add-produtos></app-add-produtos>
+</div>

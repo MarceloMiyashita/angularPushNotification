@@ -1,0 +1,50 @@
+<div *ngIf="produtos?.length > 0;else noProdutos">
+  <h5>Listagem de produtos</h5>
+  <ul *ngFor="let produto of produtos" class="collection">
+    <li class="collection-item">
+      {{'Descrição: '+ (produto.description | uppercase) + ' - Data de Validade: ' + (produto.validade | date: "dd/MM/yyyy") }}
+      <a href="#" class="secondary-content">
+          <a href="/app.component.html" target="_blank">
+              <i class="fa fa-undo fa-lg"></i>&nbsp;&nbsp;
+          </a>
+        <i (click)="deleteProduto($event, produto)" class="fa fa-trash fa-lg">&nbsp;&nbsp;</i>
+        <i (click)="editProduto($event, produto)" class="fa fa-pencil fa-lg">&nbsp;&nbsp;</i>
+      </a>
+      <div *ngIf="editState && produtoToEdit.id === produto.id">
+        <form (ngSubmit)="updateProduto(produto)">
+          <div class="row">
+              <p class="text-align: center">Edite o Produto</p>
+            <div class="input-field col-sm-6">
+              <input type="text" name="codigo" placeholder="Editar código" [(ngModel)]="produto.codigo">
+            </div>
+            <div class="input-field col-sm-6">
+              <input type="text" name="description" placeholder="Editar descrição" [(ngModel)]="produto.description">
+            </div>
+            <div class="input-field col-sm-6">
+                <input type="text" name="qtde" placeholder="Editar quantidade" [(ngModel)]="produto.qtde">
+              </div>
+            <div class="input-field col-sm-6">
+              <input type="text" name="loja" placeholder="Editar loja" [(ngModel)]="produto.loja">
+            </div>
+            <div class="input-field col-sm-6">
+              <input type="text" name="secao" placeholder="Editar seção" [(ngModel)]="produto.secao">
+            </div>
+            <div class="input-field col-sm-6">
+              <input type="text" name="tipo" placeholder="Editar tipo" [(ngModel)]="produto.tipo">
+            </div>
+            <div class="input-field col-sm-6">
+              <input type="date" name="validade" placeholder="Editar validade" [(ngModel)]="produto.validade">
+            </div>
+            <input type="submit" class="btn" value="Atualizar">
+            <button class="btn red" (click)="deleteProduto($event, produto)">Apagar</button>
+          </div>
+        </form>
+      </div>
+
+    </li>
+  </ul>
+</div>
+
+<ng-template #noProdutos>
+  <h5>Nenhum produto a ser exibido.</h5>
+</ng-template>
